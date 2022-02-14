@@ -71,6 +71,9 @@ public class PayBillsPage extends BasePage{
     @FindBy(xpath = "//*[@id='alert_content'][contains(.,'successfully submitted.')]")
     public WebElement successMsg;
 
+    @FindBy(id = "pc_inDollars_true")
+    public WebElement usDollarRadioButton;
+
     public boolean allCurrenciesAvailable(List<String> expectedCurrencyOptions){
         List<String> expectedOptionsWithoutWhiteSpaces = new ArrayList<>();
         for (String each : expectedCurrencyOptions){

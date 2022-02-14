@@ -4,7 +4,7 @@ Feature: Functionalities at Pay Bills page works properly
     Given the user "any user" is on the login page
     And the user enters the credentials "username" and "password" to login
 
-  @wip @setupAndTeardown
+  @setupAndTeardown
   Scenario: Pay Bills page should have the title "Zero - Pay Bills"
     Given the user navigates to "Pay Bills" page
     And verify that the page "Pay Bills" title is "Zero - Pay Bills"
@@ -28,8 +28,9 @@ Feature: Functionalities at Pay Bills page works properly
       | Apple           | Brokerage   | 70000  | 2019-09-23 | Money money money |
       | Apple           | Brokerage   | 75400  | 2019-09-23 | Money money money |
 
-   @setupAndTeardown
-  Scenario Outline: When user tries to make a payment without entering the amount or date, an aler message pups up
+    #there is a problem about getting pup up msg as even though you don't click pay button, the TC passes nevertheless as if the msg pups p however that's not the case.
+  @wip @setupAndTeardown
+  Scenario Outline: When user tries to make a payment without entering the amount or date, an alert message pups up
     Given the user navigates to "Pay Bills" page
     And verify that the page "Pay Bills" title is "Zero - Pay Bills"
     When user try to make a payment without entering "<amountInput>" or "<dateInput>"

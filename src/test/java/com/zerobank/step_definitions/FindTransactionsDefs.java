@@ -57,7 +57,6 @@ public class FindTransactionsDefs {
         Assert.assertTrue(areDatesBetweenToAndFrom);
     }
 
-
     @Then("the results should be sorted by most recent date")
     public void the_results_should_be_sorted_by_most_recent_date() throws ParseException {
         boolean isSorted = new AccountActivityPage().areDatesSorted();

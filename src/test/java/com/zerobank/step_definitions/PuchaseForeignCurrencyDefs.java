@@ -50,6 +50,11 @@ public class PuchaseForeignCurrencyDefs {
         new PayBillsPage().selectCurrency(givenCurrency);
     }
 
+    @Given("the user select the radio button US Dollar")
+    public void the_user_select_the_radioButton() {
+        new PayBillsPage().usDollarRadioButton.click();
+    }
+
     @When("the user tries to calculate cost without entering a value")
     public void the_user_tries_to_calculate_cost_without_entering_a_value() {
         new PayBillsPage().calculateCostBtn.click();
@@ -97,14 +102,16 @@ public class PuchaseForeignCurrencyDefs {
         String actualAlertMsgForDate = payBillsPage.savedPayeeDateInput.getAttribute("validationMessage");
         System.out.println("actualAlertMsg = " + actualAlertMsgForAmount);
         System.out.println("actualAlertMsg = " + actualAlertMsgForDate);
-        try{
-            if(payBillsPage.savedPayeeAmountInput.getText().isEmpty()){
-                System.out.println("Throws exception");
-            }
-        }catch (Exception e){
-            Assert.assertEquals(expectedAlertMsg, actualAlertMsgForAmount);
-            Assert.assertEquals(expectedAlertMsg, actualAlertMsgForDate);
-        }
+
+
+        Assert.assertEquals(expectedAlertMsg, actualAlertMsgForAmount);
+//            if(payBillsPage.savedPayeeAmountInput.getText().isEmpty()){
+//
+//            }else if (payBillsPage.savedPayeeDateInput.getText().isEmpty()){
+//                Assert.assertEquals(expectedAlertMsg, actualAlertMsgForDate);
+//            }
+
+
 
     }
 

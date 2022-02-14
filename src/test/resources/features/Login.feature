@@ -1,7 +1,7 @@
 Feature: Login functionality works as expected
 
 
-   @setupAndTeardown
+  @setupAndTeardown
   Scenario Outline: only authorized user <userType> should be able to login (positive and negative testing)
     Given the user "<userType>" is on the login page
     And the user enters the credentials "<userName>" and "<passWord>" to login

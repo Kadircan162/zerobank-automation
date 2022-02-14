@@ -27,6 +27,8 @@ Feature: Purchase Foreign Currency
   @setupAndTeardown
   Scenario: Error message for not selecting currency
     Given the user accesses the Purchase foreign currency cash tab
+    And the user select the radio button US Dollar
+    And send a value
     When the user tries to calculate cost without selecting a currency
     Then error message "Please, ensure that you have filled all the required fields with valid values." should be displayed
 
@@ -35,5 +37,6 @@ Feature: Purchase Foreign Currency
   Scenario: Error message for not entering value
     Given the user accesses the Purchase foreign currency cash tab
     And the user select the currency "Japan (yen)"
+    And the user select the radio button US Dollar
     When the user tries to calculate cost without entering a value
     Then error message "Please, ensure that you have filled all the required fields with valid values." should be displayed

@@ -134,7 +134,7 @@ public class AccountActivityPage extends BasePage {
 
      */
 
-    public boolean areDatesSorted() throws ParseException {
+    public boolean areDatesSorted() throws ParseException { //2012-06-02, 2012-06-09, , 2012-06-01
 
         List<Date> dateList = new ArrayList<>(getActualDates());
 
