@@ -101,12 +101,10 @@ public class PuchaseForeignCurrencyDefs {
 
             if(payBillsPage.savedPayeeAmountInput.getText() == null){
                 String actualAlertMsgForAmount = payBillsPage.savedPayeeAmountInput.getAttribute("validationMessage");
-                System.out.println("actualAlertMsgForAmount = " + actualAlertMsgForAmount);
                 Assert.assertEquals(expectedAlertMsg, actualAlertMsgForAmount);
 
             }else if (payBillsPage.savedPayeeDateInput.getText() == null){
                 String actualAlertMsgForDate = payBillsPage.savedPayeeDateInput.getAttribute("validationMessage");
-                System.out.println("actualAlertMsgForDate = " + actualAlertMsgForDate);
                 Assert.assertEquals(expectedAlertMsg, actualAlertMsgForDate);
             }
 
