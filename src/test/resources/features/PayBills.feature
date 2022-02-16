@@ -9,7 +9,7 @@ Feature: Functionalities at Pay Bills page works properly
     Given the user navigates to "Pay Bills" page
     And verify that the page "Pay Bills" title is "Zero - Pay Bills"
 
-  @setupAndTeardown
+   @setupAndTeardown
   Scenario Outline: When user completes a successful payment, a success message gets displayed
     Given the user navigates to "Pay Bills" page
     And fill out all input field and select choices using following valid info
@@ -29,7 +29,7 @@ Feature: Functionalities at Pay Bills page works properly
       | Apple           | Brokerage   | 75400  | 2019-09-23 | Money money money |
 
     #there is a problem about getting pup up msg as even though you don't click pay button, the TC passes nevertheless as if the msg pups p however that's not the case.
-  @wip @setupAndTeardown
+  @smoke @setupAndTeardown
   Scenario Outline: When user tries to make a payment without entering the amount or date, an alert message pups up
     Given the user navigates to "Pay Bills" page
     And verify that the page "Pay Bills" title is "Zero - Pay Bills"

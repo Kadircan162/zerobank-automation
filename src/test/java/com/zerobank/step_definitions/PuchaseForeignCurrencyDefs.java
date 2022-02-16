@@ -96,22 +96,19 @@ public class PuchaseForeignCurrencyDefs {
 
     @Then("verify that {string} alert message pups up")
     public void verify_that_alert_message_pups_up(String expectedAlertMsg) {
-        BrowserUtils.waitFor(2);
+
         PayBillsPage payBillsPage = new PayBillsPage();
-        String actualAlertMsgForAmount = payBillsPage.savedPayeeAmountInput.getAttribute("validationMessage");
-        String actualAlertMsgForDate = payBillsPage.savedPayeeDateInput.getAttribute("validationMessage");
-        System.out.println("actualAlertMsg = " + actualAlertMsgForAmount);
-        System.out.println("actualAlertMsg = " + actualAlertMsgForDate);
 
+            if(payBillsPage.savedPayeeAmountInput.getText() == null){
+                String actualAlertMsgForAmount = payBillsPage.savedPayeeAmountInput.getAttribute("validationMessage");
+                System.out.println("actualAlertMsgForAmount = " + actualAlertMsgForAmount);
+                Assert.assertEquals(expectedAlertMsg, actualAlertMsgForAmount);
 
-        Assert.assertEquals(expectedAlertMsg, actualAlertMsgForAmount);
-//            if(payBillsPage.savedPayeeAmountInput.getText().isEmpty()){
-//
-//            }else if (payBillsPage.savedPayeeDateInput.getText().isEmpty()){
-//                Assert.assertEquals(expectedAlertMsg, actualAlertMsgForDate);
-//            }
-
-
+            }else if (payBillsPage.savedPayeeDateInput.getText() == null){
+                String actualAlertMsgForDate = payBillsPage.savedPayeeDateInput.getAttribute("validationMessage");
+                System.out.println("actualAlertMsgForDate = " + actualAlertMsgForDate);
+                Assert.assertEquals(expectedAlertMsg, actualAlertMsgForDate);
+            }
 
     }
 

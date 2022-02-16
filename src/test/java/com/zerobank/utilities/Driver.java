@@ -22,11 +22,11 @@ public class Driver {
 
         if(driver == null){
             String browser = ConfigurationReader.get("browser");
-            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-            desiredCapabilities.setAcceptInsecureCerts(true);
-
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.merge(desiredCapabilities);
+//            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+//            desiredCapabilities.setAcceptInsecureCerts(true);
+//
+//            ChromeOptions chromeOptions = new ChromeOptions();
+//            chromeOptions.merge(desiredCapabilities);
 
             switch (browser){
 
@@ -40,18 +40,18 @@ public class Driver {
                     driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
                     break;
 
-                case "chrome-ssl":
-                    WebDriverManager.chromedriver().setup();
-                    ChromeOptions options = new ChromeOptions();
-                    options.setAcceptInsecureCerts(true);
-                    driver = new ChromeDriver(options);
-                    break;
+//                case "chrome-ssl":
+//                    WebDriverManager.chromedriver().setup();
+//                    ChromeOptions options = new ChromeOptions();
+//                    options.setAcceptInsecureCerts(true);
+//                    driver = new ChromeDriver(options);
+//                    break;
 
-                case "chrome_73":
-                    ChromeOptions options2 = new ChromeOptions();
-                    options2.setBinary("\"C:\\Users\\arate\\Downloads\\Win_619326_chrome-win\\chrome-win\\chrome.exe\"");
-                    WebDriverManager.chromedriver().driverVersion("73.0.3683.68").setup();
-                    driver = new ChromeDriver(options2);
+//                case "chrome_73":
+//                    ChromeOptions options2 = new ChromeOptions();
+//                    options2.setBinary("\"C:\\Users\\arate\\Downloads\\Win_619326_chrome-win\\chrome-win\\chrome.exe\"");
+//                    WebDriverManager.chromedriver().driverVersion("73.0.3683.68").setup();
+//                    driver = new ChromeDriver(options2);
 
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
@@ -85,7 +85,7 @@ public class Driver {
             }
 
         }
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         return driver;
     }
 
