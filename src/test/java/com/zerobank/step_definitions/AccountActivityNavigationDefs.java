@@ -22,9 +22,7 @@ public class AccountActivityNavigationDefs {
     public void the_Account_Activity_page_should_be_displayed() {
         String actualTitle = Driver.get().getTitle();
         String expectedTitle = "Zero - Account Activity";
-
         Assert.assertEquals(expectedTitle, actualTitle);
-
     }
 
     @Then("Account dropdown should have {string} selected")
@@ -41,7 +39,6 @@ public class AccountActivityNavigationDefs {
         List<String> actualSubTabColumns = new AccountActivityPage().getSubTableColumnList();
         Assert.assertEquals(expectedSubTabColumns, actualSubTabColumns);
     }
-
 
 
 }

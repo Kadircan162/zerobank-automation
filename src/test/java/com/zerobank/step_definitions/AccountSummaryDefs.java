@@ -10,7 +10,6 @@ public class AccountSummaryDefs {
 
     @Given("verify that {string} page has following account types")
     public void verify_that_page_has_following_account_types(String string, List<String> expectedAccountTypesList) {
-
         List<String> actualAccountTypesList = new AccountSummaryPage().getAccountTypeList();
         Assert.assertEquals(expectedAccountTypesList, actualAccountTypesList);
     }

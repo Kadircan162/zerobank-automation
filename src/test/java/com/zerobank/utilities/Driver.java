@@ -30,15 +30,15 @@ public class Driver {
 
             switch (browser){
 
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    break;
-
-                case "chrome-headless":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
-                    break;
+//                case "chrome":
+//                    WebDriverManager.chromedriver().setup();
+//                    driver = new ChromeDriver();
+//                    break;
+//
+//                case "chrome-headless":
+//                    WebDriverManager.chromedriver().setup();
+//                    driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+//                    break;
 
 //                case "chrome-ssl":
 //                    WebDriverManager.chromedriver().setup();
@@ -47,12 +47,12 @@ public class Driver {
 //                    driver = new ChromeDriver(options);
 //                    break;
 
-//                case "chrome_73":
-//                    ChromeOptions options2 = new ChromeOptions();
-//                    options2.setBinary("\"C:\\Users\\arate\\Downloads\\Win_619326_chrome-win\\chrome-win\\chrome.exe\"");
-//                    WebDriverManager.chromedriver().driverVersion("73.0.3683.68").setup();
-//                    driver = new ChromeDriver(options2);
-
+                case "chrome_73":
+                    ChromeOptions options = new ChromeOptions();
+                    options.setBinary("C:\\Users\\arate\\Downloads\\Win_619326_chrome-win (1)\\chrome-win\\chrome.exe");
+                    WebDriverManager.chromedriver().driverVersion("73.0.3683.68").setup();
+                    driver = new ChromeDriver(options);
+                    break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();

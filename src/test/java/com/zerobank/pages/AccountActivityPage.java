@@ -3,6 +3,7 @@ package com.zerobank.pages;
 
 import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.java.en_lol.WEN;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -61,32 +62,34 @@ public class AccountActivityPage extends BasePage {
     public List<WebElement> transactionsColumnList;
 
 
-    public List<Date> getActualDates() throws ParseException {
-        List<String> dates = new ArrayList<>();
+    public List<Date> getActualDatesAtDateFormat() throws ParseException {
+        List<String> actualDates = new ArrayList<>();
         for (WebElement each : dateList) {
-            String s = each.getText();
-            dates.add(s.substring(0, 4).replace(s.substring(0, 2), "") + s.substring(4));//12-09-01
+            //String s = each.getText();
+            //dates.add(s.substring(0, 4).replace(s.substring(0, 2), "") + s.substring(4));//12-09-01
+            actualDates.add(each.getText());
         }
 
-        System.out.println("dates fedfed = " + dates);
+        System.out.println("actual dates as string = " + actualDates);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        List<Date> dateList = new ArrayList<>();
+        List<Date> dateListAtDateFormat = new ArrayList<>();
 
-        for (String each : dates) {
+        for (String each : actualDates) {
             Date utilDate = dateFormat.parse(each);
-            dateList.add(utilDate);
+            dateListAtDateFormat.add(utilDate);
         }
-        return dateList;
+        System.out.println("dateListAtDateFormat = " + dateListAtDateFormat);
+        return dateListAtDateFormat;
     }
 
     public boolean dateContains(String date) throws ParseException {
-        String newDate = date.substring(0, 4).replace(date.substring(0, 2), "") + date.substring(4);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
-        Date givenDate = dateFormat.parse(newDate);
+        //String newDate = date.substring(0, 4).replace(date.substring(0, 2), "") + date.substring(4);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date givenDate = dateFormat.parse(date);
 
-        List<Date> actualDates = getActualDates();
+        List<Date> actualDates = getActualDatesAtDateFormat();
 
         for(Date eachDate : actualDates){
             if(eachDate.compareTo(givenDate) == 0){
@@ -97,23 +100,35 @@ public class AccountActivityPage extends BasePage {
         return false;
     }
 
+    public boolean areDatesSorted() throws ParseException { //2012-06-09, 2012-06-02, 2012-06-01
+
+        List<Date> dateList = new ArrayList<>(getActualDatesAtDateFormat());
+
+        for (int i = 0; i < dateList.size() - 1; i++) {
+            if (dateList.get(i).compareTo(dateList.get(i + 1)) < 0) {
+                System.out.println("Dates are not sorted as most recent");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public boolean areDatesBetween(String dateFrom, String dateTo) throws ParseException {
-        String dateStartFrom = dateFrom.substring(0, 4).replace(dateFrom.substring(0, 2), "") + dateFrom.substring(4);
-        String dateEndTo = dateTo.substring(0, 4).replace(dateTo.substring(0, 2), "") + dateTo.substring(4);
+//        String dateStartFrom = dateFrom.substring(0, 4).replace(dateFrom.substring(0, 2), "") + dateFrom.substring(4);
+//        String dateEndTo = dateTo.substring(0, 4).replace(dateTo.substring(0, 2), "") + dateTo.substring(4);
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        Date givenDateFrom = dateFormat.parse(dateStartFrom);
-        Date givenDateTo = dateFormat.parse(dateEndTo);
+        Date givenDateFrom = dateFormat.parse(dateFrom); //2012-06-01
+        Date givenDateTo = dateFormat.parse(dateTo); //2012-06-09
 
         if (areDatesSorted()) {
 
-            List<Date> list = new ArrayList<>(getActualDates());
+            List<Date> actualDatelist = new ArrayList<>(getActualDatesAtDateFormat());
+            System.out.println("actualDatelist = " + actualDatelist);
 
-            if (list.get(0).compareTo(givenDateTo) > 0) {
-                System.out.println("The actual dates list has dates out of the given dates range");
-                return false;
-            }else if(list.get(list.size()-1).compareTo(givenDateFrom) < 0){
+            if (actualDatelist.get(0).compareTo(givenDateTo) > 0 || actualDatelist.get(actualDatelist.size()-1).compareTo(givenDateFrom) < 0) {
                 System.out.println("The actual dates list has dates out of the given dates range");
                 return false;
             }
@@ -134,19 +149,7 @@ public class AccountActivityPage extends BasePage {
 
      */
 
-    public boolean areDatesSorted() throws ParseException { //2012-06-02, 2012-06-09, , 2012-06-01
 
-        List<Date> dateList = new ArrayList<>(getActualDates());
-
-        for (int i = 0; i < dateList.size() - 1; i++) {
-            if (dateList.get(i).compareTo(dateList.get(i + 1)) < 0) {
-                System.out.println("Dates are not sorted as most recent");
-                return false;
-            }
-        }
-
-        return true;
-    }
 
     public List<String> getDescriptionList(){
         List<String> descriptions = new ArrayList<>();

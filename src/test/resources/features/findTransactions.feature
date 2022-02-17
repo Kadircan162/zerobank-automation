@@ -5,14 +5,15 @@ Feature: Find transactions in Account Activity
     And the user enters the credentials "username" and "password" to login
     And the user accesses the "Find Transactions" tab at Account Activity
 
-  @setupAndTeardown
+  @wip @setupAndTeardown
   Scenario: Search date range
     When the user enters date range from "2012-09-01" to "2012-09-06"
     And clicks search
-    Then results table should only show transactions dates between "2012-09-01" to "2012-09-06"
     And the results should be sorted by most recent date
+    Then results table should only show transactions dates between "2012-09-01" to "2012-09-06"
     When the user enters date range from "2012-09-02" to "2012-09-06"
     And clicks search
+    And the results should be sorted by most recent date
     Then results table should only show transactions dates between "2012-09-01" to "2012-09-06"
     And the results table should only not contain transactions dated "2012-09-01"
 

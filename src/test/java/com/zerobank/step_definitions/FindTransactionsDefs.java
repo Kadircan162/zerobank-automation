@@ -28,20 +28,12 @@ public class FindTransactionsDefs {
     }
 
     @When("the user enters date range from {string} to {string}")
-    public void the_user_enters_date_range_from_to(String dateFrom, String dateTo) {
+    public void the_user_enters_date_range_from_to(String dateFrom, String dateTo) { //"2012-09-02" to "2012-09-06"
         AccountActivityPage accountActivityPage = new AccountActivityPage();
         accountActivityPage.datesFrom.clear();
         accountActivityPage.datesFrom.sendKeys(dateFrom);
         accountActivityPage.datesTo.clear();
         accountActivityPage.datesTo.sendKeys(dateTo);
-        /*
-        String actualDateFrom = accountActivityPage.datesFrom.getAttribute("value");
-        String actualDateTo = accountActivityPage.datesTo.getAttribute("value");
-        System.out.println("dateFrom = " + dateFrom);
-        System.out.println("dateTo = " + dateTo);
-        Assert.assertEquals(dateFrom, actualDateFrom);
-        Assert.assertEquals(dateTo,actualDateTo);
-         */
 
     }
 

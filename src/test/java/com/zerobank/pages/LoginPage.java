@@ -33,7 +33,7 @@ public class LoginPage {
         usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
         signInButtonToLogin.click();
-        Driver.get().get("http://zero.webappsecurity.com/bank/account-summary.html");
+        //Driver.get().get("http://zero.webappsecurity.com/bank/account-summary.html");
     }
 
 
